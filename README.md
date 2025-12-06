@@ -61,21 +61,22 @@ Follow these steps to run the project locally.
 
 ### 1. Clone the Repository
 ```bash
-================================================
+#================================================
 git clone [https://github.com/YOUR_USERNAME/LinkMe.git](https://github.com/YOUR_USERNAME/LinkMe.git)
 cd LinkMe
 cd server
-npm install
-================================================
+#================================================
 .env setup 
 PORT=8080
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET_KEY=your_secret_key
 FRONTEND_URL=http://localhost:5173
-==================================================
-frontend set up
-==================================================
+#==================================================
+npm install
+npm run dev
+#frontend set up
+#==================================================
+cd ..
 cd client
 npm install
-=================================================
-to start both server and client : **npm run dev** in both directory
+npm run dev

@@ -1,0 +1,58 @@
+@import "tailwindcss";
+/* CSS Variables for consistent dark theme */
+:root {
+  --page-bg-color: #080118; /* Light beige chat background */
+  --header-footer-bg: #f0f2f5; /* Light grey for header/footer */
+  --border-color: #d1d7db; /* Subtle border grey */
+  --text-primary: #111b21; /* Dark grey for main text */
+  --text-secondary: #54656f; /* Lighter grey for icons/placeholders */
+  --bubble-sent-bg: #dcf8c6; /* Light green for sent messages */
+  --bubble-received-bg: #ffffff; /* White for received messages */
+  --bubble-text-color: #303030; /* Dark text within bubbles */
+  --timestamp-color: #888; /* Grey for timestamps */
+  --link-color: #007bff; /* Standard blue for buttons */
+  --link-hover: #0056b3; /* Darker blue for hover */
+  --error-color: #d9534f; /* Red for errors */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --page-bg: #121212; /* Very dark background */
+  --card-bg: #1e1e1e; /* Slightly lighter card */
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--page-bg-color);
+    color: var(--text-primary);
+}
+
+/* Responsive base styles */
+* {
+    box-sizing: border-box;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        font-size: 18px;
+    }
+}
+.liquid-ether-container {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  touch-action: none;
+}

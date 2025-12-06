@@ -1,0 +1,203 @@
+
+.friend-requests {
+  /* --- Color Palette (from Sidebar.css) --- */
+  --bg-dark-slate: #1A202C;
+  --bg-medium-slate: #2D3748;
+  --bg-light-slate: #4A5568;
+  --text-primary: #F7FAFC;
+  --text-secondary: #A0AEC0;
+  --border-color: #4A5568;
+
+  /* --- Action Colors (New & Reused) --- */
+  --accent-success: #38A169;       /* Re-using 'status-online' */
+  --accent-success-hover: #2F855A; /* Darker green */
+  --accent-danger: #E53E3E;        /* Professional Red */
+  --accent-danger-hover: #C53030;  /* Darker Red */
+
+  /* --- Layout --- */
+  position: relative; /* Allows the content to be positioned absolutely */
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+/* * --- Toggle Button (e.g., "Friend Requests (3)") --- 
+*/
+.friend-requests-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 14px 20px; /* Consistent with header/search */
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.friend-requests-toggle:hover {
+  background-color: var(--bg-light-slate);
+}
+
+/* * --- Content Dropdown (Floats over the chat list) --- 
+*/
+.friend-requests-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20; /* Sits above search results and chat list */
+  background-color: var(--bg-medium-slate);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+/* Message for "No friend requests" */
+.no-requests {
+  padding: 16px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* * --- Individual Request Item (The Fix is Here) --- 
+*/
+.request-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.request-item:last-child {
+  border-bottom: none;
+}
+
+.request-item:hover {
+  background-color: var(--bg-light-slate);
+}
+
+.request-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* * --- FIX: Text Overflow --- 
+ * 'flex: 1' tells it to take remaining space.
+ * 'min-width: 0' allows it to shrink and truncate.
+*/
+.request-details {
+  flex: 1;
+  min-width: 100px; /* Gives it presence, but can shrink */
+}
+
+.request-name,
+.request-username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.request-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.request-username {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* * --- Action Buttons Container --- 
+*/
+.request-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0; /* Prevents buttons from shrinking */
+}
+
+/* * --- Accept / Reject Buttons --- 
+*/
+.accept-btn,
+.reject-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.accept-btn {
+  background-color: var(--accent-success);
+}
+
+.accept-btn:hover {
+  background-color: var(--accent-success-hover);
+}
+
+.reject-btn {
+  background-color: var(--accent-danger);
+}
+
+.reject-btn:hover {
+  background-color: var(--accent-danger-hover);
+}
+
+/* * --- Custom Scrollbar (matches Sidebar.css) --- 
+*/
+.friend-requests-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.friend-requests-content::-webkit-scrollbar-track {
+  background: var(--bg-dark-slate);
+}
+
+.friend-requests-content::-webkit-scrollbar-thumb {
+  background-color: var(--bg-light-slate);
+  border-radius: 10px;
+}
+
+/* * ==========================================
+ * RESPONSIVE STYLES
+ * ==========================================
+ */
+@media (max-width: 420px) {
+  /* * On very narrow sidebars, we stack the buttons
+   * for maximum readability and to prevent layout breaks.
+   */
+  .request-item {
+    justify-content: center; /* Center avatar/details when buttons wrap */
+  }
+
+  .request-actions {
+    width: 100%;
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  .accept-btn,
+  .reject-btn {
+    width: 100%;
+    justify-content: center; /* Center button text/icon */
+  }
+}

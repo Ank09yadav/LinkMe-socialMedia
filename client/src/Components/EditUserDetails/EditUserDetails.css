@@ -1,0 +1,165 @@
+/**
+ * ==========================================
+ * REFACTORED EDIT USER DETAILS (INLINE PANEL)
+ * Designer: Gemini
+ * Strategy: Re-styled to match "Modern Slate"
+ * theme from Sidebar.css. This component is
+ * now designed to render inline, *not* as a modal.
+ * ==========================================
+ */
+
+.edit-user-details {
+  /* --- Scoped Color Palette (from Sidebar.css) --- */
+  --bg-medium-slate: #2D3748;
+  --bg-light-slate: #4A5568;
+  --text-primary: #F7FAFC;
+  --text-secondary: #A0AEC0;
+  --accent-purple: #805AD5;
+  --accent-purple-hover: #6B46C1;
+  --border-color: #4A5568;
+  --status-success: #38A169; /* Re-using 'status-online' */
+  --accent-danger: #E53E3E;
+  --accent-danger-hover: #C53030;
+
+  /* --- Spacing --- */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --radius-sm: 4px;
+
+  /* --- Component Styles --- */
+  background-color: var(--bg-medium-slate);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  /* This component is no longer a modal, so all
+     position: absolute, z-index, etc. are removed. */
+}
+
+.edit-user-details h2 {
+  text-align: left;
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+  font-size: 1.25rem; /* 20px */
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  background-color: var(--bg-light-slate);
+  color: var(--text-primary);
+}
+
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 2px rgba(128, 90, 213, 0.6); /* Fainter purple glow */
+}
+
+/* --- Profile Picture Section --- */
+.profile-preview {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+  border: 2px solid var(--accent-purple);
+}
+
+.profile-pic-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic-controls input[type="file"] {
+  flex-grow: 1;
+  padding: 5px; /* File inputs are tricky, smaller padding helps */
+  font-size: 0.875rem;
+}
+
+/* --- Buttons (Update & Delete) --- */
+.delete-pic-btn,
+.update-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem; /* 14px */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.delete-pic-btn {
+  background-color: var(--accent-danger);
+  color: var(--text-primary);
+  border: none;
+}
+
+.delete-pic-btn:hover:not(:disabled) {
+  background-color: var(--accent-danger-hover);
+}
+
+.update-btn {
+  background-color: var(--accent-purple);
+  color: var(--text-primary);
+  margin-top: var(--spacing-sm); /* Space above main button */
+}
+
+.update-btn:hover:not(:disabled) {
+  background-color: var(--accent-purple-hover);
+}
+
+.update-btn:disabled,
+.delete-pic-btn:disabled {
+  background-color: var(--bg-light-slate);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+/* --- Feedback Messages --- */
+.message {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--status-success); /* Green for success */
+}
+
+.message.error {
+  color: var(--accent-danger); /* Red for error */
+}
+
+/* --- Responsive (Kept minimal) --- */
+@media (max-width: 600px) {
+  .edit-user-details {
+    padding: var(--spacing-md);
+  }
+  .profile-pic-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

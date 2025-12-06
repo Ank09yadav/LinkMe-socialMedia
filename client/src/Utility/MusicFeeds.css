@@ -1,0 +1,164 @@
+/* --- Container for Search/Player --- */
+.watch-together-container {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0; /* Prevent container from shrinking */
+}
+
+/* --- Player Styles --- */
+.watch-together-player {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    height: 100px; /* Small player height */
+    box-sizing: border-box;
+}
+
+.player-container {
+    width: 160px; /* 16:9 aspect ratio */
+    height: 90px;
+    flex-shrink: 0;
+    background-color: #000;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.player-info {
+    flex: 1;
+    overflow: hidden;
+    color: var(--text-primary);
+}
+.player-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--accent-color);
+}
+.player-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.watch-together-player .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* --- Search Styles --- */
+.watch-together-search {
+    padding: 10px;
+    max-height: 350px; /* Limit height */
+    display: flex;
+    flex-direction: column;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.search-header h3 {
+    margin: 0;
+    color: var(--accent-color);
+}
+.search-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.search-bar input {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 20px 0 0 20px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+}
+.search-bar button {
+    border: 1px solid var(--border-color);
+    outline: none;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 0 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;
+}
+
+.search-feed {
+    flex: 1; /* Take remaining space */
+    overflow-y: auto; /* Enable scrolling for results */
+}
+
+/* Custom Scrollbar */
+.search-feed::-webkit-scrollbar { width: 5px; }
+.search-feed::-webkit-scrollbar-track { background: transparent; }
+.search-feed::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.search-card {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.search-card:hover {
+    background-color: var(--hover-bg);
+}
+.search-card img {
+    width: 120px;
+    height: 67px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.card-info {
+    overflow: hidden;
+}
+.card-info h2 {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin: 0 0 3px 0;
+    /* 2-line clamp */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+}
+.card-info h3 {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0 0 3px 0;
+    font-weight: 500;
+}
+.card-info p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
